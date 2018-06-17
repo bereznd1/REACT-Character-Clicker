@@ -24,10 +24,11 @@ import Footer from "./components/Footer/Footer";
 class App extends Component {
 
 
-  // state = {
-  //   result: {},
-  //   search: ""
-  // };
+  state = {
+    score: 0,
+    topScore: 0,
+    imgsClicked: []
+  };
 
   // componentDidMount() {
   //   this.searchMovies("juice");
@@ -42,11 +43,72 @@ class App extends Component {
   //       });
   // };
 
+  reShuffle = () => {
+
+
+  };
+
+
+
   handleImgClick = event => {
     // Get the data-value of the clicked button
     const imageName = event.target.attributes.getNamedItem("data-value").value;
 
-    console.log(imageName);
+    // const newState = { ...this.state };
+
+
+
+    //Checking to see if the image you guessed has already been clicked
+    const multiplesArray = this.state.imgsClicked.filter(function(img) { return img === imageName; });
+    var multiples = multiplesArray.length;
+
+    //If you guess the image for THE FIRST TIME (WIN)
+    if (multiples === 0) {
+      this.setState({ score: this.state.score + 1, imgsClicked: [...this.state.imgsClicked, imageName] });
+      
+
+
+      this.reShuffle();
+
+
+    }
+
+          //If the current updated score is higher than the top score, add a point to top score
+          if ( (multiples === 0) && (this.state.score > this.state.topScore) ) {
+            this.setState({ score: this.state.score + 1, topScore: this.state.topScore + 1, imgsClicked: [...this.state.imgsClicked, imageName] })
+         }
+
+         
+
+    //If you repeat a guess (LOSE)
+    else if (multiples > 0) {
+      this.setState({ score: 0, imgsClicked: [] });
+      this.reShuffle();
+      
+    }
+
+
+
+    // //if the name of the image just clicked isn't in the state's img array yet...
+    // if ( this.state.imgsClicked.indexOf(imageName) === -1  ) {
+    //     //Add the name of the image just clicked, into the state's img array
+    //     this.setState({ score: this.state.score + 1, imgsClicked: [...this.state.imgsClicked, imageName] });
+    // }
+
+    // else {
+    //     this.setState({ score: 0, imgsClicked: [] });
+    //     this.reShuffle();
+    // }
+
+
+
+
+    console.log(this.state);
+
+
+
+
+    
 
     // Clone this.state to the newState object
     // We'll modify this object and use it to set our component's state
@@ -84,7 +146,7 @@ class App extends Component {
         {/* Header */}
         <Row>
           <Col size="md-12">
-            <Header />
+            <Header score={this.state.score} topScore={this.state.topScore} />
           </Col>
         </Row>
 
