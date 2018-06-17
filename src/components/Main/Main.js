@@ -14,55 +14,55 @@ const Main = props => (
 
 <Row>
     <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/kramer.jpg`)} data-value="kramer" alt="kramer"/>
+    <input type="image" onClick={props.handleImgClick} src={props.images[0]} alt={props.images[0]}/>
     </Col>
 
     <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/estelle.jpg`)} data-value="estelle" alt="estelle"/>
+    <input type="image" onClick={props.handleImgClick} src={props.images[1]} alt={props.images[1]}  />
+    </Col>
+
+    <Col size="md-3"> 
+    <input type="image" onClick={props.handleImgClick} src={props.images[2]} alt={props.images[2]} />
     </Col>
 
     <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/newman.jpg`)} data-value="newman" alt="newman"/>
-    </Col>
-
-    <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/helen.jpg`)} data-value="helen" alt="helen"/>
-    </Col>
-</Row>
-
-<Row>
-    <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/elaine.jpg`)} data-value="elaine" alt="elaine" />
-    </Col>
-
-    <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/morty.jpg`)} data-value="morty" alt="morty"/>
-    </Col>
-
-    <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/leo.jpg`)} data-value="leo" alt="leo"/>
-    </Col>
-
-    <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/jackie.jpg`)} data-value="jackie" alt="jackie"/>
+    <input type="image" onClick={props.handleImgClick} src={props.images[3]} alt={props.images[3]}  />
     </Col>
 </Row>
 
 <Row>
     <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/susan.jpg`)} data-value="susan" alt="susan"/>
+    <input type="image" onClick={props.handleImgClick} src={props.images[4]} alt={props.images[4]}  />
     </Col>
 
     <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/george.jpg`)} data-value="george" alt="george"/>
+    <input type="image" onClick={props.handleImgClick} src={props.images[5]} alt={props.images[5]} />
     </Col>
 
     <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/seinfeld.jpg`)} data-value="seinfeld" alt="seinfeld"/>
+    <input type="image" onClick={props.handleImgClick} src={props.images[6]} alt={props.images[6]} />
     </Col>
 
     <Col size="md-3">
-    <input type="image" onClick={props.handleImgClick} src={require(`../../img/frank.jpg`)} data-value="frank" alt="frank"/>
+    <input type="image" onClick={props.handleImgClick} src={props.images[7]} alt={props.images[7]} />
+    </Col>
+</Row>
+
+<Row>
+    <Col size="md-3">
+    <input type="image" onClick={props.handleImgClick} src={props.images[8]} alt={props.images[8]} />
+    </Col>
+
+    <Col size="md-3">
+    <input type="image" onClick={props.handleImgClick} src={props.images[9]} alt={props.images[9]}/>
+    </Col>
+
+    <Col size="md-3">
+    <input type="image" onClick={props.handleImgClick} src={props.images[10]} alt={props.images[10]}/>
+    </Col>
+
+    <Col size="md-3">
+    <input type="image" onClick={props.handleImgClick} src={props.images[11]} alt={props.images[11]}/>
     </Col>
 </Row>
 

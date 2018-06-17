@@ -20,6 +20,20 @@ import Main from "./components/Main/Main";
 //--
 import Footer from "./components/Footer/Footer";
 
+import kramer from './img/kramer.jpg';
+import estelle from './img/estelle.jpg';
+import newman from './img/newman.jpg';
+import helen from './img/helen.jpg';
+import elaine from './img/elaine.jpg';
+import morty from './img/morty.jpg';
+import leo from './img/leo.jpg';
+import jackie from './img/jackie.jpg';
+import susan from './img/susan.jpg';
+import george from './img/george.jpg';
+import seinfeld from './img/seinfeld.jpg';
+import frank from './img/frank.jpg';
+
+
 
 class App extends Component {
 
@@ -27,7 +41,8 @@ class App extends Component {
   state = {
     score: 0,
     topScore: 0,
-    imgsClicked: []
+    imgsClicked: [],
+    images: [kramer, estelle, newman, helen, elaine, morty, leo, jackie, susan, george, seinfeld, frank]
   };
 
   // componentDidMount() {
@@ -43,20 +58,25 @@ class App extends Component {
   //       });
   // };
 
-  reShuffle = () => {
+  reShuffle = array => {
 
+    var shuffledArray = [];
+    var len = array.length;
+    while(len){
+       shuffledArray.push(array.splice(Math.floor(Math.random()*array.length),1)[0]);
+       len--;
+    }
+    this.setState({ images: shuffledArray });
 
   };
 
 
 
+
   handleImgClick = event => {
-    // Get the data-value of the clicked button
-    const imageName = event.target.attributes.getNamedItem("data-value").value;
-
-    // const newState = { ...this.state };
-
-
+    // Get the src of the clicked button
+    const imageName = event.target.attributes.getNamedItem("src").value;
+    console.log(imageName);
 
     //Checking to see if the image you guessed has already been clicked
     const multiplesArray = this.state.imgsClicked.filter(function(img) { return img === imageName; });
@@ -66,39 +86,29 @@ class App extends Component {
     if (multiples === 0) {
       this.setState({ score: this.state.score + 1, imgsClicked: [...this.state.imgsClicked, imageName] });
       
+      this.state.score >= this.state.topScore ? this.setState({ topScore: this.state.topScore + 1 }) : this.setState({ topScore: this.state.topScore });
 
 
-      this.reShuffle();
+      
 
 
     }
-
-          //If the current updated score is higher than the top score, add a point to top score
-          if ( (multiples === 0) && (this.state.score > this.state.topScore) ) {
-            this.setState({ score: this.state.score + 1, topScore: this.state.topScore + 1, imgsClicked: [...this.state.imgsClicked, imageName] })
-         }
-
-         
 
     //If you repeat a guess (LOSE)
     else if (multiples > 0) {
       this.setState({ score: 0, imgsClicked: [] });
-      this.reShuffle();
+    
       
     }
 
 
+    
 
-    // //if the name of the image just clicked isn't in the state's img array yet...
-    // if ( this.state.imgsClicked.indexOf(imageName) === -1  ) {
-    //     //Add the name of the image just clicked, into the state's img array
-    //     this.setState({ score: this.state.score + 1, imgsClicked: [...this.state.imgsClicked, imageName] });
-    // }
 
-    // else {
-    //     this.setState({ score: 0, imgsClicked: [] });
-    //     this.reShuffle();
-    // }
+    //RESHUFFLING
+    this.reShuffle(this.state.images);
+
+
 
 
 
@@ -106,30 +116,6 @@ class App extends Component {
     console.log(this.state);
 
 
-
-
-    
-
-    // Clone this.state to the newState object
-    // We'll modify this object and use it to set our component's state
-    //JUST A DIFF WAY TO SET STATE BY CLONING IT
-    // const newState = { ...this.state };
-
-    // if (btnType === "pick") {
-    //   // Set newState.match to either true or false depending on whether or not the dog likes us (1/5 chance)
-    //   newState.match = 1 === Math.floor(Math.random() * 5) + 1;
-
-    //   // Set newState.matchCount equal to its current value or its current value + 1 depending on whether the dog likes us
-    //   newState.matchCount = newState.match
-    //     ? newState.matchCount + 1
-    //     : newState.matchCount;
-    // } else {
-    //   // If we thumbs down'ed the dog, we haven't matched with it
-    //   newState.match = false;
-    // }
-    // // Replace our component's state with newState, load the next dog image
-    // this.setState(newState);
-    // this.loadNextDog();
 
 
   };
@@ -168,7 +154,7 @@ class App extends Component {
           <Col size="md-8">
 
 
-            <Main handleImgClick={this.handleImgClick}/>
+            <Main handleImgClick={this.handleImgClick} images={this.state.images}/>
       
       
               </Col>
