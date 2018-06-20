@@ -9,7 +9,7 @@ import Row from "./components/Row";
 import Col from "./components/Col";
 
 // make a navbar later on
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 
 //-- FIGURE OUT WHY I CANT JUST IMPORT ENTIRE HERO FOLDER AS "./COMPONENTS/HERO"
 import Hero from "./components/Hero/Hero";
@@ -33,6 +33,8 @@ import george from './img/george.jpg';
 import seinfeld from './img/seinfeld.jpg';
 import frank from './img/frank.jpg';
 
+import bg from './img/bg.jpg';
+
 
 
 class App extends Component {
@@ -41,22 +43,11 @@ class App extends Component {
   state = {
     score: 0,
     topScore: 0,
+    message: "",
     imgsClicked: [],
     images: [kramer, estelle, newman, helen, elaine, morty, leo, jackie, susan, george, seinfeld, frank]
   };
 
-  // componentDidMount() {
-  //   this.searchMovies("juice");
-  // }
-
-  // handleImgClick = event => {
-
-  //       $(document).on("click", ".view-comments", function() {
-  //       //Save the ID from that button
-  //       var thisId = $(this).attr("data-id");
-
-  //       });
-  // };
 
   reShuffle = array => {
 
@@ -84,39 +75,22 @@ class App extends Component {
 
     //If you guess the image for THE FIRST TIME (WIN)
     if (multiples === 0) {
-      this.setState({ score: this.state.score + 1, imgsClicked: [...this.state.imgsClicked, imageName] });
+      this.setState({ score: this.state.score + 1, message: "You guessed correctly!", imgsClicked: [...this.state.imgsClicked, imageName] });
       
       this.state.score >= this.state.topScore ? this.setState({ topScore: this.state.topScore + 1 }) : this.setState({ topScore: this.state.topScore });
-
-
-      
-
 
     }
 
     //If you repeat a guess (LOSE)
     else if (multiples > 0) {
-      this.setState({ score: 0, imgsClicked: [] });
-    
-      
+      this.setState({ score: 0, message: "You guessed incorrectly!", imgsClicked: [] });
     }
 
 
-    
-
-
+  
     //RESHUFFLING
     this.reShuffle(this.state.images);
-
-
-
-
-
-
     console.log(this.state);
-
-
-
 
   };
 
@@ -132,14 +106,14 @@ class App extends Component {
         {/* Header */}
         <Row>
           <Col size="md-12">
-            <Header score={this.state.score} topScore={this.state.topScore} />
+            <Header score={this.state.score} topScore={this.state.topScore} message={this.state.message}/>
           </Col>
         </Row>
 
         {/* Hero */}
         <Row>
           <Col size="md-12">
-            <Hero>
+            <Hero backgroundImage={bg}>
               <h1>Clicky Game!</h1>
               <h2>Click on an image to earn points, but don't click on any more than once!</h2>
             </Hero>
@@ -174,8 +148,6 @@ class App extends Component {
         
        </Container>
        
-
-
 
     );
   }
