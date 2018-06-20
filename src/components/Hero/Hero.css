@@ -1,37 +1,38 @@
 .hero {
-    height: 200px;
-    width: 100%;
-    background-size: cover;
-    background-color: #801396;
-    background-position: center;
-    position: relative;
-    margin-top: 100px;
-    margin-bottom: 50px;
-  }
-  
-  .hero::after {
-    content: "";
-    display: block;
-    opacity: .4;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: black;
-  }
-  
-  .hero * {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .hero h1, .hero h2 {
-    color: white;
-  }
-  
-  .hero h1 {
-    font-size: 60px;
-    padding-top: 40px;
-    margin-top: 0;
-  }
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  background-color: #801396;
+  background-position: center;
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.hero::after {
+  content: "";
+  display: block;
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+}
+
+.hero * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1,
+.hero h2 {
+  color: white;
+}
+
+.hero h1 {
+  font-size: 60px;
+  padding-top: 40px;
+  margin-top: 0;
+}
