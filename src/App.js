@@ -1,24 +1,16 @@
+//Imports react
 import React, { Component } from "react";
 
-// ---
+//Imports necessary components
 import Container from "./components/Container";
-//--
 import Row from "./components/Row";
-//--
 import Col from "./components/Col";
-
-// make a navbar later on
 import Header from "./components/Header/Header";
-
-//-- FIGURE OUT WHY I CANT JUST IMPORT ENTIRE HERO FOLDER AS "./COMPONENTS/HERO"
 import Hero from "./components/Hero/Hero";
-
 import Main from "./components/Main/Main";
-// import Card from "./components/Card";
-
-//--
 import Footer from "./components/Footer/Footer";
 
+//Imports all necessary image files
 import kramer from "./img/kramer.jpg";
 import estelle from "./img/estelle.jpg";
 import newman from "./img/newman.jpg";
@@ -31,14 +23,13 @@ import susan from "./img/susan.jpg";
 import george from "./img/george.jpg";
 import seinfeld from "./img/seinfeld.jpg";
 import frank from "./img/frank.jpg";
-
 import bg from "./img/bg.jpg";
 
 class App extends Component {
   state = {
     score: 0,
     topScore: 0,
-    message: "",
+    message: "Click an image to begin!",
     imgsClicked: [],
     images: [
       kramer,
@@ -102,7 +93,6 @@ class App extends Component {
 
     //RESHUFFLING
     this.reShuffle(this.state.images);
-
   };
 
   render() {
@@ -114,7 +104,7 @@ class App extends Component {
           topScore={this.state.topScore}
           message={this.state.message}
         />
-        
+
         {/* Hero */}
         <Hero backgroundImage={bg}>
           <h1>Seinfeld Clicker!</h1>
@@ -127,8 +117,7 @@ class App extends Component {
         <Container>
           {/* Main Image Section */}
           <Row>
-            <Col size="md-2">
-            </Col>
+            <Col size="md-2" />
 
             <Col size="md-8">
               <Main
@@ -137,8 +126,7 @@ class App extends Component {
               />
             </Col>
 
-            <Col size="md-2">
-            </Col>
+            <Col size="md-2" />
           </Row>
         </Container>
 

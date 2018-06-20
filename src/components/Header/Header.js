@@ -1,14 +1,10 @@
 import React from "react";
-// ---
-import Container from "./../Container";
-//--
-import Row from "./../Row";
-//--
-import Col from "./../Col";
+
+import Container from "../Container";
+import Row from "../Row";
+import Col from "../Col";
 
 import "./Header.css";
-
-// By importing the Header.css file, it is added to the DOM whenever this component loads
 
 const Header = props => (
   <header className="header">
@@ -25,7 +21,8 @@ const Header = props => (
         <Col size="md-4">
           <span
             className={`${
-              props.message === "You guessed correctly!" || props.message === ""
+              props.message === "You guessed correctly!" ||
+              props.message === "Click an image to begin!"
                 ? "success"
                 : "fail"
             }`}
