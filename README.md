@@ -1,4 +1,4 @@
-# ReactJS "Seinfeld Clicker" Game
+# ReactJS "Seinfeld Clicker" Game  
 
 ![ReactJS "Seinfeld Clicker" Game](screenshot.png)
 
